@@ -59,6 +59,11 @@ devture_traefik_config_certificatesResolvers_acme_caServer: "{{ 'https://acme-st
 # devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint controls on which entrypoint the HTTP ACME challenge is enabled.
 devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint: "{{ devture_traefik_config_entrypoint_web_name if devture_traefik_config_entrypoint_web_enabled else '' }}"
 
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled: false
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider: ''
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay: 0
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_environment_variables: ''
+
 # Controls whether the web entrypoint is enabled
 devture_traefik_config_entrypoint_web_enabled: true
 devture_traefik_config_entrypoint_web_name: web
@@ -233,3 +238,5 @@ devture_traefik_environment_variables: ''
 #   my.label=1
 #   another.label="here"
 devture_traefik_labels_additional_labels: ''
+
+
