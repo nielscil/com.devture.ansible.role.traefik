@@ -62,14 +62,14 @@ devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint: "{{ 
 # devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled can be used to use the DNS-01 Challenge instead of the default HTTP ACME challenge
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled: false
 # devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider specifies the DNS-01 Challenge provider.
-# Available options are found on: https://doc.traefik.io/traefik/v1.7/configuration/acme/#provider
+# Available options are found on: https://doc.traefik.io/traefik/https/acme/#providers
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider: ''
 
-# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay enables an delay before the dns records is checked, more info: https://doc.traefik.io/traefik/v1.7/configuration/acme/#delaybeforecheck
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay enables an delay before the dns records is checked, more info: https://doc.traefik.io/traefik/https/acme/#providers
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay: 0
 
 # devture_traefik_config_certificatesResolvers_acme_dnsChallenge_environment_variables specifies the variables needed for the provider. 
-# For more info see about which variables need to be specified, see: https://doc.traefik.io/traefik/v1.7/configuration/acme/#provider
+# For more info see about which variables need to be specified, see: https://doc.traefik.io/traefik/https/acme/#providers
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_environment_variables: ''
 
 # devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file_path specifies the in container path to the DNS challenge private key file.
