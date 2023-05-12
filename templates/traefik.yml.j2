@@ -75,8 +75,15 @@ certificatesResolvers:
       email: {{ devture_traefik_config_certificatesResolvers_acme_email | to_json }}
       storage: {{ devture_traefik_config_certificatesResolvers_acme_storage | to_json }}
       caServer: {{ devture_traefik_config_certificatesResolvers_acme_caServer | to_json }}
+	  
+	  {% if not devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled %}
       httpChallenge:
         entrypoint: {{ devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint | to_json }}
+	  {% else %}
+      dnsChallenge:
+        provider: {{ devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider }}
+        delayBeforeCheck: {{ devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay }}
+	  {% endif %}
 {% endif %}
 
 providers:

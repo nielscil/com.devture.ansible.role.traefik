@@ -59,10 +59,24 @@ devture_traefik_config_certificatesResolvers_acme_caServer: "{{ 'https://acme-st
 # devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint controls on which entrypoint the HTTP ACME challenge is enabled.
 devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint: "{{ devture_traefik_config_entrypoint_web_name if devture_traefik_config_entrypoint_web_enabled else '' }}"
 
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled can be used to use the DNS-01 Challenge instead of the default HTTP ACME challenge
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled: false
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider specifies the DNS-01 Challenge provider.
+# Available options are found on: https://doc.traefik.io/traefik/v1.7/configuration/acme/#provider
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider: ''
+
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay enables an delay before the dns records is checked, more info: https://doc.traefik.io/traefik/v1.7/configuration/acme/#delaybeforecheck
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_delay: 0
+
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_environment_variables specifies the variables needed for the provider. 
+# For more info see about which variables need to be specified, see: https://doc.traefik.io/traefik/v1.7/configuration/acme/#provider
 devture_traefik_config_certificatesResolvers_acme_dnsChallenge_environment_variables: ''
+
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file_path specifies the in container path to the DNS challenge private key file.
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file_path: '/config/dns-challenge-private-key'
+
+# devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file specifies the private key when needed to be provided according to the provider (e.g. TransIP)
+devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file: ''
 
 # Controls whether the web entrypoint is enabled
 devture_traefik_config_entrypoint_web_enabled: true

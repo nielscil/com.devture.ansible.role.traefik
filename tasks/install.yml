@@ -46,9 +46,18 @@
       become: false
       delegate_to: 127.0.0.1
 
+- name: Ensure Traefik ACME DNS challenge private key file installed
+  when: devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file != ''
+  ansible.builtin.copy:
+    content: "{{ devture_traefik_config_certificatesResolvers_acme_dnsChallenge_private_key_file }}"
+    dest: "{{ devture_traefik_config_dir_path }}/dns-challenge-private-key"
+    owner: "{{ devture_traefik_uid }}"
+    group: "{{ devture_traefik_gid }}"
+    mode: 0640
+
 - name: Ensure Traefik environment variables installed
   ansible.builtin.copy:
-    content: "{{ devture_traefik_environment_variables }}"
+    src: "{{ role_path }}/templates/env.j2"
     dest: "{{ devture_traefik_config_dir_path }}/env"
     owner: "{{ devture_traefik_uid }}"
     group: "{{ devture_traefik_gid }}"

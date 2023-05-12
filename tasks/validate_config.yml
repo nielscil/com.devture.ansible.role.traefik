@@ -26,10 +26,19 @@
   fail:
     msg: >-
       You need to define a required configuration setting (`{{ item }}`) when enabling ACME SSL certificate resolvers.
-  when: "devture_traefik_config_certificatesResolvers_acme_enabled | bool and vars[item] == ''"
+  when: "devture_traefik_config_certificatesResolvers_acme_enabled | bool and not devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled | bool and vars[item] == ''"
   with_items:
     - devture_traefik_config_certificatesResolvers_acme_email
     - devture_traefik_config_certificatesResolvers_acme_httpChallenge_entrypoint
+    
+- name: Fail if required Traefik ACME DNS challenge settings not defined
+  fail:
+    msg: >-
+      You need to define a required configuration setting (`{{ item }}`) when enabling ACME DNS challenge SSL certificate resolvers.
+  when: "devture_traefik_config_certificatesResolvers_acme_enabled | bool and devture_traefik_config_certificatesResolvers_acme_dnsChallenge_enabled | bool and vars[item] == ''"
+  with_items:
+    - devture_traefik_config_certificatesResolvers_acme_email
+    - devture_traefik_config_certificatesResolvers_acme_dnsChallenge_provider
 
 - name: Fail if Traefik docker endpoint syntax invalid
   fail:
